@@ -1,0 +1,114 @@
+@font-face {
+    font-family: inter;
+    src: url("../fonts/Inter-Medium.otf");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: inter;
+    src: url("../fonts/Inter-Light.otf");
+    font-style: normal;
+    font-weight: 200;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #000;
+    font-size: large;
+    padding-left: 5px;
+}
+
+
+
+.login-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 20%;
+}
+
+.link-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    font-family: inter;
+    font-weight: 200;
+}
+
+.link-section a {
+    transition: border ease-out 0.1s;
+}
+
+.link-section a:hover {
+    border-bottom: 3px solid #1275EA;
+}
+
+.logo-section a {
+    width: 20%;
+    font-family: inter;
+    font-weight: 300;
+    font-size: 1.4em;
+    padding-left: .5em;
+}
+
+.box-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.box-1 a:first-child {
+    color: #1275EA;
+    text-decoration: underline #1275EA;
+    font-family: inter;
+    font-weight: 200;
+}
+
+.box-1 a:last-child {
+    color: #fff;
+    font-family: inter;
+    font-weight: 200;
+    background: #1275EA;
+    padding: 10px 25px;
+    border-radius: 8px;
+}
+
+.shoping-cart {
+    color: #1275EA;
+}
+
+.courses-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.profile-name {
+    padding: 10px 25px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+}
+
+.profile {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    background: #fff;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.4);
+    padding: 10px 30px;
+    width: 100%;
+    transition: visibility 0.4s ease-in-out;
+    border-radius: 0 0 8px 8px;
+    gap: 10px;
+}

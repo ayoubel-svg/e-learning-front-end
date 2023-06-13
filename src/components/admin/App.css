@@ -1,0 +1,9 @@
+li.page-item a, input, select, .accordion-button {
+  outline: none !important;
+  box-shadow: none !important;
+  user-select: none !important;
+}
+
+.offcanvas{
+	box-shadow: none;
+}

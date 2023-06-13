@@ -1,0 +1,30 @@
+@font-face {
+    font-family: inter;
+    src: url("../fonts/Inter-Medium.otf");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: inter;
+    src: url("../fonts/Inter-Light.otf");
+    font-style: normal;
+    font-weight: 200;
+}
+
+.tutor-paragraphe {
+    font-family: inter;
+    font-weight: 200;
+    width: 50%;
+
+}
+
+.tutor-detaille {
+    width: 300px;
+    height: 400px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0);
+}
+
+.splide__pagination__page.is-active {
+    background-color: #1275EA;
+}

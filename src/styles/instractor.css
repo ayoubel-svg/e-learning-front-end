@@ -1,0 +1,98 @@
+@font-face {
+    font-family: Inter;
+    src: url("../fonts/Inter-Thin.otf");
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("../fonts/Inter-Bold.otf");
+    font-style: normal;
+    font-weight: 600;
+}
+
+.instractor-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    font-family: inter;
+    font-weight: 200;
+}
+
+.sidebar {
+    position: fixed;
+    top: 8%;
+    width: 16%;
+    height: 625px;
+    padding-top: 2em;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    row-gap: 2em;
+}
+
+.sidebar span {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background .7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.sidebar span:hover {
+    background: #1275ea;
+    color: #fff;
+}
+
+.content-container {
+    position: absolute;
+    right: 0;
+    height: 608px;
+    width: 84%;
+    overflow: auto;
+    background: #f5f5f5;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+}
+
+.content-container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.dashboard {
+    width: 100%;
+    height: 100vh;
+    padding: 2em;
+}
+
+.my-courses {
+    width: 100%;
+    height: 100vh;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.my-table {
+    width: 100%;
+    height: 80%;
+}
+
+.my-table table {
+    width: 100%;
+
+}
+
+.my-table table th,
+.my-table table td {
+    border: 1px solid black;
+}
+
+.newcourse {
+    width: 100%;
+    min-height: 80%;
+    padding: 2em;
+}

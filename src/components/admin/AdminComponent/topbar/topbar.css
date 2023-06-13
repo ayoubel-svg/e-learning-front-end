@@ -1,0 +1,32 @@
+#navitem:hover {
+    background-color: aqua;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+}
+
+.navbar-brand:hover {
+    font-weight: 700;
+    background-color: none !important;
+}
+
+.offcanvas {
+    transition: all 0.5s ease-in-out;
+}
+
+.navbar-toggler {
+    outline: none !important;
+    box-shadow: none !important;
+    /* user-select: none !important; */
+}
+
+a {
+    text-decoration: none;
+}
+
+a.nav-item:hover {
+    background-color: black !important;
+    color: aliceblue !important;
+}
+
