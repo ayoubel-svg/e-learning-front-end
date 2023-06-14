@@ -55,7 +55,7 @@ const Home = () => {
         </div>
       </div>
       <a
-        href="#"
+        href="/"
         onClick={() => window.scrollTo(0, 0)}
         className="arrow-up"
         style={{

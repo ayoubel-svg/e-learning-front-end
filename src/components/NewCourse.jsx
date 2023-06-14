@@ -60,7 +60,6 @@ const NewCourse = () => {
     }
   }
 
-
   async function handleSubmit(e) {
     e.preventDefault();
     const token = sessionStorage.getItem("token")
