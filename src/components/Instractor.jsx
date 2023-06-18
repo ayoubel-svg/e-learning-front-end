@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/instractor.css";
 import NewCourse from "./NewCourse";
 import MyCourses from "./MyCourses";
+import InstractorDashboard from "./InstractorDashboard";
 
 const Instractor = () => {
   const [selected, setSelected] = useState("dashboard");
@@ -48,7 +49,7 @@ const Instractor = () => {
             display: selected === "dashboard" ? "" : "none",
           }}
         >
-          Dashborad
+          <InstractorDashboard />
         </div>
         <div
           className="my-courses"

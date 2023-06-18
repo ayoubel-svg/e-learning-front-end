@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
-import DashboardIcon from '@mui/icons-material/Dashboard'; import AnalyticsIcon from '@mui/icons-material/Analytics';
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import LogoutIcon from '@mui/icons-material/Logout';
-import SchoolIcon from '@mui/icons-material/School';
 import "./sidebar.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import SchoolIcon from '@mui/icons-material/School';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 
 export default function SideBar({ activeNav, selected }) {
 
@@ -19,6 +18,8 @@ export default function SideBar({ activeNav, selected }) {
     win.removeItem("token");
     win.removeItem("role");
     win.removeItem("name");
+    win.removeItem("email");
+    win.removeItem("password");
     try {
       const res = await axios.post(
         "http://127.0.0.1:8000/api/logout",

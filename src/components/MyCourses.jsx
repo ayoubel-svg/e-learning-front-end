@@ -31,8 +31,6 @@ const MyCourses = () => {
             }
         }
         getData()
-        console.log(courses)
-
     }, [deleteStatus])
     const theError = () => {
         toast.error("error occurd", {
@@ -111,7 +109,6 @@ const MyCourses = () => {
                     })}
                 </tbody>
             </table>
-            {/* {handleUpdate()} */}
             <ToastContainer />
 
         </>

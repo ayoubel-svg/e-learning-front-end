@@ -1,0 +1,52 @@
+@font-face {
+    font-family: Inter;
+    src: url("../fonts/Inter-Thin.otf");
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("../fonts/Inter-Bold.otf");
+    font-style: normal;
+    font-weight: 600;
+}
+
+.dashboard {
+    font-family: inter;
+    font-weight: 200;
+}
+
+.top-section {
+    width: 100%;
+    height: 25%;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2em;
+}
+
+.student {
+    width: 35%;
+    height: 100%;
+    background: #2F6865;
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.cours {
+    width: 35%;
+    height: 100%;
+    background: #3EA09C;
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}

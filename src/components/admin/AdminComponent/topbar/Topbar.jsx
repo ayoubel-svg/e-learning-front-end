@@ -1,28 +1,37 @@
+import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
+
+import "./topbar.css";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import LogoutIcon from '@mui/icons-material/Logout';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import SchoolIcon from '@mui/icons-material/School';
-import "./topbar.css";
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 export default function TopBar({ activeNav, selected }) {
 
 	const [isOffcanvasVisible, setOffcanvasVisible] = useState(false);
+	const [username, setUsername] = useState(window.sessionStorage.getItem("name"));
 	const navigate = useNavigate();
 
 	const win = window.sessionStorage;
+
+	setInterval(() => {
+		setUsername(win.getItem("name"))
+	}, 2000);
 
 	async function logout() {
 		win.removeItem("token");
 		win.removeItem("role");
 		win.removeItem("name");
+		win.removeItem("email");
+		win.removeItem("password");
+		win.removeItem("city");
 		try {
 			const res = await axios.post(
 				"http://127.0.0.1:8000/api/logout",
@@ -48,14 +57,14 @@ export default function TopBar({ activeNav, selected }) {
 		<>
 			<nav className="navbar navbar-expand-lg sticky-top  bg-light">
 				<div className="container-fluid">
-					<a className="navbar-brand me-0" href="/">LOGO</a>
+					<Link id='brand' className="navbar-brand me-0 rounded py-0 px-1" to={"/"}>HoomSchool</Link>
 					<button
 						className="navbar-toggler"
 						type="button"
 						data-bs-toggle="offcanvas"
 						data-bs-target="#nav-bar"
 						aria-controls="nav-bar"
-						// aria-expanded={`${isOffcanvasVisible ? true : false}`}
+						aria-expanded={"true"}
 						aria-label="Toggle navigation"
 						onClick={() => {
 							setOffcanvasVisible(!isOffcanvasVisible)
@@ -74,7 +83,7 @@ export default function TopBar({ activeNav, selected }) {
 						onBlur={() => setOffcanvasVisible(false)}
 					>
 						<div className="offcanvas-header py-auto">
-							<h4 className="me-auto my-auto">ADMIN</h4>
+							<h4 className="me-auto my-auto text-capitalize">{username}</h4>
 							<button
 								type="button"
 								className="btn-close ms-auto rounded-circle p-2 bg-danger"
@@ -82,7 +91,7 @@ export default function TopBar({ activeNav, selected }) {
 								aria-label="Close"
 							></button>
 						</div>
-						<ul className="navbar-nav d-flex justify-content-end mb-lg-0">
+						<ul className="navbar-nav gap-2 d-flex justify-content-end mb-lg-0">
 							{/* DropDown Menu */}
 							<div className="dropdown d-none d-lg-block my-auto">
 								<button
@@ -90,7 +99,7 @@ export default function TopBar({ activeNav, selected }) {
 									text-capitalize"
 									type="button" data-bs-toggle="dropdown"
 									aria-expanded="false"
-								>{window.sessionStorage.getItem('name')}
+								>{username}
 								</button>
 								<ul className="dropdown-menu dropdown-menu-end">
 									<li>
@@ -122,9 +131,7 @@ export default function TopBar({ activeNav, selected }) {
             			${activeNav === "dashboard" ? "bg-primary text-white" : ""}`}
 								style={{ cursor: "pointer" }}
 								onClick={() => handleNavItemClick("dashboard")}
-							>
-								<DashboardIcon />
-								Dashboard
+							><DashboardIcon />Dashboard
 							</li>
 							<li
 								className={`nav-item d-flex gap-1 my-1 px-4 d-block d-lg-none p-1 
@@ -160,9 +167,10 @@ export default function TopBar({ activeNav, selected }) {
 							</li>
 							<hr />
 							<li
-								className={`nav-item d-flex gap-1 my-1 px-4 d-block d-lg-none p-1 
-									text-uppercase text-danger fw-bold w-100`}
+								className="nav-item d-flex gap-1 my-1 px-4 d-block d-lg-none p-1 
+								text-uppercase text-danger fw-bold w-100"
 								onClick={logout}
+								style={{ cursor: "pointer" }}
 							><LogoutIcon />Logout
 							</li>
 						</ul>

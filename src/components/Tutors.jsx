@@ -40,9 +40,6 @@ const Tutors = () => {
                         })}
                     </Splide>
                 </Box>
-                <Box sx={{ width: "100%", height: "300px", display: "flex", alignItems: "center", justifyContent: "end" }}>
-                    <img src={plant} alt="plant" style={{ width: "150px", height: "200px", objectFit: "cover", marginTop: "-25em" }} />
-                </Box>
             </Box>
         </Stack>
     );

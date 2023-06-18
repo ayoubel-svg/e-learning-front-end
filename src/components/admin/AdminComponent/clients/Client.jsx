@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 
-export default function Tutor({ tutor }) {
+export default function Client({ client }) {
 
   return (
     <div>
@@ -13,7 +13,7 @@ export default function Tutor({ tutor }) {
             <div>
               <div className="card-header text-center">
                 <h5 className="card-title text-capitalize my-auto">
-                  {tutor.user.name}
+                  {client.name}
                 </h5>
               </div>
               <div className="card-body d-flex flex-column" >
@@ -21,21 +21,21 @@ export default function Tutor({ tutor }) {
                   <li className="list-group-item">
                     <span className="card-text d-flex">Email
                       <span className="ms-auto fw-bold">
-                        {tutor.user.email}
+                        {client.email}
                       </span>
                     </span>
                   </li>
                   <li className="list-group-item">
                     <span className="card-text d-flex">City
                       <span className="ms-auto fw-bold">
-                        {tutor.user.city}
+                        {client.city}
                       </span>
                     </span>
                   </li>
                   <li className="list-group-item">
-                    <span className="card-text d-flex">Course Count
+                    <span className="card-text d-flex">Count
                       <span className="ms-auto fw-bold">
-                        {tutor.courses.length}
+                        {/* {tutor.courses} */} 10
                       </span>
                     </span>
                   </li>
@@ -46,39 +46,33 @@ export default function Tutor({ tutor }) {
         </div>
         <div className="col-12 col-lg-8 mb-5">
           <h2 className="mb-3 mt-3 mt-lg-0 pb-1 text-center rounded bg-info bg-gradient shadow">
-            Added Courses
+            Enrolled Courses
           </h2>
           <div className="row g-2">
-            <h3 className="text-center fw-bold">{tutor.courses.length === 0 && "No courses yet"}</h3>
-            {tutor.courses.map(course => {
-              return (
-                <div className="col-6">
-                  <div
-                    className="card mb-3 w-auto"
-                  >
-                    <div className="row g-0 w-auto">
-                      <div className="col-4 my-auto">
-                        <img
-                          alt="crs"
-                          src={`http://127.0.0.1:8000/images/${course.image}`}
-                          className="img-fluid rounded-start my-auto border.1 border-end"
-                        />
-                      </div>
-                      <div class="col">
-                        <div className="card-body">
-                          <h5 className="card-title text-center text-capitalize">{course.title}</h5>
-                          <small className="card-text p-0 w-100">
-                            {course.description}
-                          </small>
-                        </div>
-                      </div>
+            <div className="col-6">
+              <div
+                className="card mb-3 w-auto"
+              >
+                <div className="row g-0 w-auto">
+                  <div className="col-4 my-auto">
+                    <img
+                      alt="crs"
+                      src={"../java-logo.png"}
+                      className="img-fluid rounded-start my-auto"
+                    />
+                  </div>
+                  <div class="col">
+                    <div className="card-body">
+                      <h5 className="card-title text-center text-capitalize">java</h5>
+                      <small className="card-text p-0 w-100">
+                        Some quick example text
+                      </small>
                     </div>
                   </div>
                 </div>
-              )
-            })
-            }
-            {/* <div className="col-6">
+              </div>
+            </div>
+            <div className="col-6">
               <div
                 className="card mb-3 w-auto"
               >
@@ -100,7 +94,7 @@ export default function Tutor({ tutor }) {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -108,6 +102,6 @@ export default function Tutor({ tutor }) {
   );
 }
 
-Tutor.propTypes = {
-  tutor: PropTypes.object
+Client.propTypes = {
+  client: PropTypes.object
 };

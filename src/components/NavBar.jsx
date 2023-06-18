@@ -5,18 +5,18 @@ import { useSelector } from "react-redux";
 
 import "../styles/navbar.css";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import SettingsIcon from "@mui/icons-material/Settings";
+
 import LogoutIcon from "@mui/icons-material/Logout";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 
 
 const NavBar = () => {
 
   const [isLoged, setIsloged] = useState(false);
-
   const [isAdmin, setIsAdmin] = useState(false);
+  const [username, setUsername] = useState(window.sessionStorage.getItem("name"));
+
   const user = useSelector((state) => state.user.userInfo);
   const win = window.sessionStorage;
 
@@ -26,7 +26,9 @@ const NavBar = () => {
     const role = win.getItem("role");
     role === "1" && setIsAdmin(true);
   }, [user.token, user.name, win]);
-
+  setInterval(() => {
+    setUsername(win.getItem("name"))
+  }, 2000);
   async function logout() {
     setIsAdmin(false);
     setIsloged(false);
@@ -90,7 +92,8 @@ const NavBar = () => {
               </Link>
               <Link
                 to="/admin"
-                className="nav-link"
+                className="nav-link btn btn-sm btn-primary btn-outline-dark 
+                text-white border-0 fw-bold my-auto ms-lg-2 ms-0"
                 style={{ display: isAdmin ? "" : "none" }}
               >
                 Admin Dashboard
@@ -112,10 +115,10 @@ const NavBar = () => {
                 Register
               </Link>
               <div
-                className="box-2 d-none d-lg-block"
-                style={{ display: isLoged ? "block" : "none", cursor: "pointer" }}
+                className={`box-2 ${isLoged ? "d-none d-lg-block" : "d-none"}`}
+                style={{ cursor: "pointer" }}
               >
-                {isLoged && <ShoppingCartIcon className="shoping-cart" />}
+                <ShoppingCartIcon className="shoping-cart" />
               </div>
               <div
                 className="box-2 d-block d-lg-none nav-link me-auto"
@@ -124,35 +127,39 @@ const NavBar = () => {
                 Cart
               </div>
               <div
-                className={`nav-item rounded shadow px-1 justify-content-center w-100 bg-white
-                ${isLoged ? "d-flex" : "d-none"}`}
-                style={{ cursor: "pointer" }}
+                className={`nav-item rounded shadow justify-content-center
+                me-auto me-lg-0 w-100 ${isLoged ? "d-block" : "d-none"}`}
+                style={{ cursor: "pointer", outline: "none" }}
               >
-                <div className="dropdown d-none d-lg-block my-auto">
+                <div className="dropdown-center">
                   <button
-                    className="btn btn-sm btn-white dropdown-toggle d-flex align-items-center
-									  text-capitalize text-black border-0"
-                    type="button" data-bs-toggle="dropdown"
+                    className="btn btn-dark dropdown-toggle text-capitalize 
+                    border-0 w-100 text-center fw-bold d-flex align-items-center gap-1"
+                    type="button"
+                    data-bs-toggle="dropdown"
                     aria-expanded="false"
-                  >{window.sessionStorage.getItem('name')}
+                  >
+                    {username}
                   </button>
-                  <ul className="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <span
-                        className={`dropdown-item fw-bold d-flex gap-1`}
+                  <ul className="dropdown-menu dropdown-menu-end border-0 bg-info">
+                    {win.getItem('role') === "1" ? ""
+                      :
+                      <Link
+                        to={'/profile'}
+                        className="dropdown-item fw-bold d-flex gap-1"
                         style={{ cursor: "pointer" }}
                       >
-                        <SettingsIcon />
-                        Settings
-                      </span>
-                    </li>
-                    <li>
-                      <span
-                        onClick={logout}
-                        className="dropdown-item fw-bold d-flex gap-1"
-                      >
-                        <LogoutIcon /> Logout
-                      </span>
+                        <AccountCircleIcon />
+                        Profile
+                      </Link>
+                    }
+
+                    <li
+                      className="dropdown-item fw-bold d-flex gap-1"
+                      style={{ cursor: "pointer" }}
+                      onClick={logout}
+                    >
+                      <LogoutIcon /> Logout
                     </li>
                   </ul>
                 </div>

@@ -1,66 +1,6 @@
 import { useState } from 'react';
 import { Area, AreaChart, CartesianGrid, Label, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-
-
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-
-const days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-
-const data = [
-  {
-    sales: 10,
-    date: new Date("2023-06-01")
-  },
-  {
-    sales: 30,
-    date: new Date("2023-06-09")
-  },
-  {
-    sales: 20,
-    date: new Date("2023-06-19")
-  },
-  {
-    sales: 40,
-    date: new Date("2023-06-30")
-  },
-  {
-    sales: 15,
-    date: new Date("2023-05-01")
-  },
-  {
-    sales: 3,
-    date: new Date("2023-05-09")
-  },
-  {
-    sales: 10,
-    date: new Date("2023-05-19")
-  },
-  {
-    sales: 30,
-    date: new Date("2023-05-30")
-  },
-];
+import { data, days, months } from '../../../Data';
 
 
 function CoursesSales() {
@@ -70,8 +10,9 @@ function CoursesSales() {
 
   return (
     <>
-      <div className='d-flex flex-column'>
+      <div className='d-flex flex-column' key={Date.now()}>
         <select
+          key={Date.now()}
           value={dataMonth}
           className='form-select w-auto me-auto my-3'
           onChange={(e) => setData(e.target.value)}
@@ -127,7 +68,7 @@ function CoursesSales() {
             </AreaChart>
           </ResponsiveContainer>
         </div>
-      </div >
+      </div>
     </>
   );
 }

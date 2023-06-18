@@ -2,11 +2,11 @@
 
 function BestSellingTutors() {
   return (
-    <div className="my-4 text-center">
+    <div className="text-center">
       <h5 className="text-center">Best-Selling Tutors</h5>
       <div className="table-responsive">
-        <table className="table table-striped mt-3 rounded overflow-hidden">
-          <thead className="bg-secondary text-center text-white">
+        <table className="table table-striped mt-2 rounded overflow-hidden">
+          <thead className="bg-dark text-center text-white">
             <tr>
               <th scope="col">Tutor</th>
               <th scope="col">Sales</th>
@@ -15,12 +15,12 @@ function BestSellingTutors() {
           </thead>
           <tbody className="text-center table-primary">
             <tr>
-              <td>Mark</td>
-              <td>1k+</td>
-              <td>DH15000</td>
+              <td>Ayoub</td>
+              <td>5k+</td>
+              <td>DH37000</td>
             </tr>
             <tr>
-              <td>Bob</td>
+              <td>Omar</td>
               <td>5k+</td>
               <td>DH37000</td>
             </tr>

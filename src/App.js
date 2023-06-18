@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -11,9 +11,13 @@ import CourseDetaile from "./components/CourseDetaile";
 import Instractor from "./components/Instractor";
 import Admin from "./components/admin/Admin"
 const App = () => {
+  const location = useLocation();
+
+  const isAdminRoute = location.pathname.startsWith("/admin");
+  const shouldRenderNavBar = !isAdminRoute;
   return (
     <React.Fragment>
-      <NavBar />
+      {shouldRenderNavBar && <NavBar />}
       <Routes>
         <Route element={<PrivateRoutes />}>
           <Route path="/admin" element={<Admin />} />

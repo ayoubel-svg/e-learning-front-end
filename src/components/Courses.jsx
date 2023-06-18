@@ -80,7 +80,7 @@ const Courses = () => {
           }).slice(0, 4)}
         </Splide>
       </Box>
-    </Stack >
+    </Stack>
   );
 };
 

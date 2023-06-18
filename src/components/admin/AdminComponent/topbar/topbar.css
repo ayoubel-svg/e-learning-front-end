@@ -6,9 +6,9 @@
     text-transform: uppercase;
 }
 
-.navbar-brand:hover {
-    font-weight: 700;
-    background-color: none !important;
+#brand:hover {
+    color: white;
+    background-color: blue !important;
 }
 
 .offcanvas {
@@ -29,4 +29,3 @@ a.nav-item:hover {
     background-color: black !important;
     color: aliceblue !important;
 }
-

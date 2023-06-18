@@ -5,34 +5,34 @@ import axios from "axios";
 
 
 
-function TutorsSales() {
+function ClientsSales() {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [data, setData] = useState();
 
   useEffect(() => {
     const fetchTutors = async () => {
-      const allTutors = await axios.get("http://127.0.0.1:8000/api/tutors", {
+      const allTutors = await axios.get("http://127.0.0.1:8000/api/clients", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
       });
-      const tutorsByCity = {};
-      Object.values(allTutors.data).forEach(tutor => {
-        const { city, id } = tutor.user;
-        if (city in tutorsByCity) {
-          tutorsByCity[city].ids.push(id);
-          tutorsByCity[city].sum = Object.values(tutorsByCity[city])[1].length;
+      const clientsByCity = {};
+      allTutors.data.forEach(tutor => {
+        const { city, id } = tutor;
+        if (city in clientsByCity) {
+          clientsByCity[city].ids.push(id);
+          clientsByCity[city].sum = Object.values(clientsByCity[city])[1].length;
         } else {
-          tutorsByCity[city] = {
+          clientsByCity[city] = {
             city,
             ids: [id],
             sum: 1
           };
         }
       });
-      const combinedData = Object.values(tutorsByCity);
+      const combinedData = Object.values(clientsByCity);
       setData(combinedData);
     }
     fetchTutors();
@@ -66,4 +66,4 @@ function TutorsSales() {
   )
 }
 
-export default TutorsSales;
+export default ClientsSales;
