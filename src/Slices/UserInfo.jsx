@@ -6,12 +6,20 @@ const UserSlice = createSlice({
     userInfo: {
       token: "",
       name: "",
+      email: "",
+      password: "",
+      city: "",
+      picture: ""
     },
   },
   reducers: {
     add_user: (state, { payload }) => {
       state.userInfo.token = payload.token;
       state.userInfo.name = payload.name;
+      state.userInfo.email = payload.email;
+      state.userInfo.city = payload.city;
+      state.userInfo.picture = payload.picture;
+      state.userInfo.password = payload.password;
     },
   },
 });

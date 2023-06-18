@@ -38,7 +38,7 @@ function Login() {
 
   const error = () => {
     toast.error(
-      "Somthing went wrong please re fill the fields || or this email is alredy been taking",
+      "Somthing went wrong please re fill the fields",
       {
         position: "top-right",
         autoClose: 2000,
@@ -71,17 +71,22 @@ function Login() {
             token: res.data.data.token,
             name: res.data.data.user.name,
             email: res.data.data.user.email,
-            email: res.data.data.user.password
+            password: res.data.data.user.password,
+            city: res.data.data.user.city,
+            image: res.data.data.user.image
           })
         );
         win.setItem("token", res.data.data.token);
         win.setItem("name", res.data.data.user.name);
         win.setItem("email", res.data.data.user.email);
         win.setItem("password", res.data.data.user.password);
+        win.setItem("city", res.data.data.user.city);
+        win.setItem("image", res.data.data.user.image);
         win.setItem("role", res.data.data.user.role);
         res.status === 200 && navigate("/");
       } catch (err) {
         setNewError(err)
+        console.log(err)
       }
     } else {
 

@@ -107,12 +107,13 @@ function Profile() {
   }
 
   return (
-    <div className="my-3 mx-2 w-auto">
+    <div className="my-3 mx-2 w-auto" style={{ border: "1px solid black", height: "100vh", display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: 'center', width: '100%' }}>
       <h4 className="text-center text-white bg-dark rounded p-2 mb-5 w-50 mx-auto">Profile</h4>
-      <div className="mx-auto w-auto text-center container">
+      <div className="mx-auto w-auto text-center container" style={{ width: "100%" }}>
         <form
           onSubmit={submitUpdate}
           encType="multipart/form-data"
+          style={{ width: "100%" }}
         >
           <div className="row">
             <div className="col-12 col-lg-7">

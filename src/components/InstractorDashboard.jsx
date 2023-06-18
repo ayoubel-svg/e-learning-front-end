@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "../styles/dashboard.css"
 import axios from "axios";
-import { Bar } from "react-chartjs-2";
-import { Chart as Chartjs } from "chart.js/auto"
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 const InstractorDashboard = () => {
     const [courses, setCourses] = useState([])
     const [numStudent, setNumStudent] = useState(0)
-    const [months, setMonths] = useState([])
-    const [coursData, setCoursData] = useState({
-        labels: [months],
-        datasets: [{
-            label: "Number Of Courses",
-            data: courses.length
-        }]
-    })
+
     useEffect(() => {
         const getData = async () => {
             const token = sessionStorage.getItem("token")
@@ -31,28 +23,35 @@ const InstractorDashboard = () => {
         courses.forEach((cours) => {
             setNumStudent((prev) => prev + parseInt(cours.enrolled))
         })
-    }, [courses, numStudent])
-    useEffect(() => {
-        courses.map((cours) => {
-            const month = new Date(cours.created_at)
-            setMonths(month.getMonth() + 1)
-        })
-    }, [courses])
-    console.log(months)
+    }, [courses.length])
+
     return (
         <div className="dashboard">
             <div className="top-section">
                 <div className="student">
-                    <h4>Student Number</h4>
-                    <span>{numStudent || 0}</span>
+                    <h3>Student Number</h3>
+                    <h5>{numStudent || 0}</h5>
                 </div>
                 <div className="cours">
-                    <h4>Cours Number</h4>
-                    <span>{courses && courses.length}</span>
+                    <h3>Cours Number</h3>
+                    <h5>{courses && courses.length}</h5>
                 </div>
             </div>
-            <div className="chart">
-                <Bar data={coursData} />
+            <div className="chart" style={{ marginBlock: "2em" }}>
+                <ResponsiveContainer
+                    width="100%"
+                    height={400}>
+                    <BarChart
+                        data={courses}
+                    >
+                        <CartesianGrid strokeDasharray="3 3"></CartesianGrid>
+                        <XAxis dataKey="title" color="red" />
+                        <YAxis dataKey="enrolled" />
+                        <Tooltip />
+                        <Legend />
+                        <Bar dataKey="enrolled" fill="#1275ea"></Bar>
+                    </BarChart>
+                </ResponsiveContainer>
             </div>
         </div>
     );
