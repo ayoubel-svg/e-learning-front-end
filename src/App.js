@@ -10,6 +10,7 @@ import PrivateRoutes from "./components/PrivateRoutes";
 import CourseDetaile from "./components/CourseDetaile";
 import Instractor from "./components/Instractor";
 import Admin from "./components/admin/Admin"
+import Profile from "./components/Profile";
 const App = () => {
   const location = useLocation();
 
@@ -27,8 +28,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="profile" element={<Profile />} />
       </Routes>
-      <Footer />
+      {shouldRenderNavBar && <Footer />}
     </React.Fragment>
   );
 };
