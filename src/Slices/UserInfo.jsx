@@ -9,7 +9,7 @@ const UserSlice = createSlice({
       email: "",
       password: "",
       city: "",
-      picture: ""
+      image: ""
     },
   },
   reducers: {
@@ -18,7 +18,7 @@ const UserSlice = createSlice({
       state.userInfo.name = payload.name;
       state.userInfo.email = payload.email;
       state.userInfo.city = payload.city;
-      state.userInfo.picture = payload.picture;
+      state.userInfo.image = payload.image;
       state.userInfo.password = payload.password;
     },
   },

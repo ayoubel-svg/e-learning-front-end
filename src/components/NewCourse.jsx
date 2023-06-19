@@ -49,7 +49,7 @@ const NewCourse = () => {
 
   function handleChange(e) {
     const { name, value, files } = e.target;
-    if (name === "videos[]") {
+    if (name === "videos") {
       let copy = { ...values };
       copy.videos.push(...files);
       setValues({ ...copy });
@@ -64,6 +64,8 @@ const NewCourse = () => {
     e.preventDefault();
     const token = sessionStorage.getItem("token")
     const formData = new FormData()
+    const formData2 = new FormData()
+
     try {
       formData.append("title", values.title)
       formData.append("category", values.category)
@@ -79,7 +81,22 @@ const NewCourse = () => {
           Authorization: `Bearer ${token}`
         }
       })
+
+      values.videos.forEach((video) => {
+        formData2.append("videos[]", video);
+      });
       response.status === 201 && success()
+      // const config = {
+      //   maxContentLength: 50 * 1024 * 1024, // 50MB (adjust the value as needed)
+      // };
+      // const reponse2 = await axios.post("http://127.0.0.1:8000/api/video", formData2, {
+      //   headers: {
+      //     Accept: "application/json",
+      //     'Content-Type': 'multipart/form-data',
+      //     Authorization: `Bearer ${token}`
+      //   }
+      // }, config)
+
       setValues({
         title: "",
         category: "",
@@ -93,26 +110,10 @@ const NewCourse = () => {
     } catch (error) {
       setError(error)
       theError()
+      console.log(error)
     }
   }
-  function createMainPart() {
-    setCounter((prev) => prev + 1)
-    setNewMainTitle([...newMainTitle, { name: `maintile${counter}` }])
-  }
-  function createSubTitle() {
-    setCounter((prev) => prev + 1)
-    setNewSubTitle([...newSubTitle, { name: `subtitle${counter}` }])
-  }
-  useEffect(() => {
-    // console.log(values.image)
-  }, [values]);
-  function handleDelete(e) {
-    setNewMainTitle((prev) => {
-      return prev.filter((input) => {
-        return input.name !== e.currentTarget.previousElementSibling.name ? input : ""
-      })
-    })
-  }
+
   return (
     <form
       encType="multipart/form-data"
@@ -221,7 +222,7 @@ const NewCourse = () => {
         </label>
         <input
           type="file"
-          name="videos[]"
+          name="videos"
           id="video"
           placeholder="Videos *"
           multiple
@@ -229,45 +230,7 @@ const NewCourse = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="box6">
-        <div className="main-title-part">
-          <>
-            <label htmlFor="main">Main Tile <span style={{ color: "red" }}>*</span></label>
-            <input type="text" name={`maintitle${counter}`} id="maintitle" placeholder="Main Title *" />
-          </>
-          {newMainTitle.length > 0 && newMainTitle.map((input) => {
-            return (
-              <div className="new-main-title">
-                <input type="text" name={input.name} placeholder="Main Title *" />
-                <span onClick={handleDelete}><CloseIcon /></span>
-              </div>
-            )
-          })}
-          <div>
-            <button onClick={createMainPart}>
-              <AddIcon />
-            </button>
-          </div>
-        </div>
-        <div className="sub-title-part">
-          <label htmlFor="sub">Sub Tile <span style={{ color: "red" }}>*</span></label>
-          <input type="text" name={`subtitle${counter}`} id="subtile" placeholder="Enter Sub Title *" />
-          {newSubTitle.length > 0 && newSubTitle.map((title) => {
-            return (
-              <div className="new-sub-title" key={nanoid}>
-                <input type="text" name={title.name} id="subtile" placeholder="Enter Sub Title *" />
-                <span onClick={handleDelete}><CloseIcon /></span>
-              </div>
-            )
-          })}
-          <div>
-            <button onClick={createSubTitle}>
-              <AddIcon />
-            </button>
-          </div>
-        </div>
-      </div>
-      <button>Publish</button>
+      <button className="publish">Publish</button>
       <ToastContainer />
     </form>
   );

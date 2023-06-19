@@ -89,7 +89,7 @@ function Login() {
         console.log(err)
       }
     } else {
-
+      setIsEmpty(true);
       error();
     }
   }
@@ -129,7 +129,7 @@ function Login() {
               )}
             </div>
             <div className="d-flex flex-column">
-              <div className="d-flex mx-auto gap-2 pe-2 mb-1 form-check form-switch">
+              {/* <div className="d-flex mx-auto gap-2 pe-2 mb-1 form-check form-switch">
                 <input
                   type="checkbox"
                   id="remember"
@@ -141,7 +141,7 @@ function Login() {
                 <label htmlFor="remember" className="text-white">
                   Remember me
                 </label>
-              </div>
+              </div> */}
               <button
                 type="submit"
                 className="btn btn-dark fw-bold w-100 btn-outline-light my-2"

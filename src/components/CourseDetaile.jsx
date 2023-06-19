@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/courseContainer.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/courseInfo.css";
 import BreadCrumb from "./BreadCrumb";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -16,6 +16,8 @@ import { Curriculms } from "../utilities/FakeData";
 const CourseDetaile = () => {
   const [isCurriculm, setIsCurriculm] = useState(false);
   const { course } = useLocation().state;
+  console.log(course)
+  const navigate = useNavigate()
   return (
     <div className="course-container">
       <div className="cours-head">
@@ -52,25 +54,7 @@ const CourseDetaile = () => {
             >
               <h4>Course Description</h4>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                nemo et repudiandae hic natus provident quam, dolor laudantium
-                voluptatibus rem amet quae sunt fuga magni aut optio asperiores
-                sit nesciunt, vitae, libero sint ad quaerat voluptatum? Quos
-                deserunt voluptas vitae aspernatur commodi architecto, doloribus
-                mollitia hic, at cum eum, nulla consequatur iure? Optio sunt et
-                dolorem neque magni qui veritatis, laudantium culpa. Dolor
-                excepturi aliquid doloremque, alias accusantium quae facere in
-                quam vitae nisi quas natus libero cumque blanditiis dolores
-                beatae quis veniam, reprehenderit minima eaque quibusdam quos
-                quo dolorum. Minus, accusamus qui officiis expedita asperiores,
-                placeat tempore excepturi provident tempora nobis dolores
-                explicabo, reprehenderit aut. Quae numquam magnam cum nulla
-                delectus quos perspiciatis odit ad debitis similique laudantium
-                eveniet at aspernatur eius distinctio quisquam facere officia
-                voluptatem rem dolorum vero repellat, dignissimos suscipit.
-                Molestias enim hic, sapiente ratione aliquid ea veniam vero
-                similique ab necessitatibus molestiae nostrum, aliquam
-                voluptates?
+                {course.description}
               </p>
             </div>
             <div
@@ -93,7 +77,7 @@ const CourseDetaile = () => {
           </div>
         </div>
         <div className="cours-board">
-          <img src={course.image} alt="pic" />
+          <img src={`http://localhost:8000/images/${course.image}`} alt="pic" />
           <div className="cours-titles">
             <p
               style={{
@@ -107,7 +91,7 @@ const CourseDetaile = () => {
               <span>
                 <AccessTimeFilledIcon /> Duration
               </span>
-              <span>14h:30min</span>
+              <span>{course.Duration} min</span>
             </p>
             <p
               style={{
@@ -121,7 +105,21 @@ const CourseDetaile = () => {
               <span>
                 <PeopleAltIcon /> Enrolled
               </span>
-              <span>120</span>
+              <span>{course.enrolled}</span>
+            </p>
+            <p
+              style={{
+                width: "100%",
+                padding: "5px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <span>
+                <PeopleAltIcon /> Price
+              </span>
+              <span>{course.Price} $</span>
             </p>
             <p
               style={{
@@ -149,7 +147,7 @@ const CourseDetaile = () => {
               <span>
                 <LanguageIcon /> Language
               </span>
-              <span>English</span>
+              <span>{course.language}</span>
             </p>
             <p
               style={{
@@ -166,7 +164,7 @@ const CourseDetaile = () => {
               <span>No</span>
             </p>
           </div>
-          <button>Enrole</button>
+          <button onClick={() => navigate("/coursevideos", { state: { id: course.id } })}>Enrole</button>
         </div>
       </div>
     </div>

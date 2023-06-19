@@ -1,0 +1,25 @@
+@font-face {
+    font-family: inter;
+    src: url("../fonts/Inter-Medium.otf");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: inter;
+    src: url("../fonts/Inter-Light.otf");
+    font-style: normal;
+    font-weight: 200;
+}
+
+.all-courses-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 4em;
+}
+
+.all-courses-container .part1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+}

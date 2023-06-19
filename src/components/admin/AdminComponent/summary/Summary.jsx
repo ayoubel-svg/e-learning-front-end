@@ -26,7 +26,7 @@ function Summary() {
         <div className="col-12 col-lg mb-2">
           <div className="card bg-primary bg-gradient">
             <div className="card-body d-flex align-items-center justify-content-between">
-              <h5 className="card-title">30000</h5>
+              <h5 className="card-title">300</h5>
               <h6
                 className="card-subtitle ps-1 text-white text-end"
                 style={{ color: "black" }}
@@ -52,7 +52,7 @@ function Summary() {
         <div className="col-12 col-lg mb-2">
           <div className="card bg-primary bg-gradient">
             <div className="card-body d-flex align-items-center justify-content-between">
-              <h5 className="card-title">20000 DH</h5>
+              <h5 className="card-title">2000 DH</h5>
               <h6
                 className="card-subtitle ps-1 text-white text-end"
                 style={{ color: "black" }}

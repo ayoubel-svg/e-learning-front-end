@@ -142,7 +142,6 @@ function AllTutors() {
                         }}
                       >
                         <td
-                          className="text-capitalize"
                         >
                           {tutor.user.name}
                         </td>
@@ -175,7 +174,6 @@ function AllTutors() {
                       style={{ cursor: "pointer" }}
                     >
                       <td
-                        className="text-capitalize"
                       >
                         {tutor.user.name}
                       </td>
@@ -205,7 +203,7 @@ function AllTutors() {
               </tbody>
             </table>
           </div>
-          <nav>
+          {/* <nav>
             <ul className="pagination justify-content-center">
               <li className="page-item">
                 <a className="page-link" href="/" aria-label="Previous">
@@ -221,7 +219,7 @@ function AllTutors() {
                 </a>
               </li>
             </ul>
-          </nav>
+          </nav> */}
         </>
       }
       <ToastContainer />

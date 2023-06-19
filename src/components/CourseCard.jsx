@@ -32,7 +32,7 @@ const CourseCard = (props) => {
               <StarRateIcon style={{ color: "#ffc107" }} />
               <StarRateIcon style={{ color: "#ffc107" }} />
             </span>
-            ({review})
+            4.8
           </span>
         </div>
       </div>

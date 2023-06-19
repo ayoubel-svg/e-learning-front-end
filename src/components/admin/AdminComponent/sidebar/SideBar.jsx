@@ -3,6 +3,7 @@ import "./sidebar.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SchoolIcon from '@mui/icons-material/School';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -85,6 +86,14 @@ export default function SideBar({ activeNav, selected }) {
           Analytics
         </li>
         <hr />
+        <li
+          className={`nav-item w-100 d-flex gap-1 rounded p-1 fw-bold ${activeNav === "profile" ? "bg-info" : ""}`}
+          style={{ cursor: "pointer" }}
+          onClick={() => selected("profile")}
+        >
+          <AccountCircleIcon />
+          Profile
+        </li>
         <li
           className={`nav-item w-100 d-flex gap-1 rounded p-1 fw-bold text-danger`}
           style={{ cursor: "pointer" }}

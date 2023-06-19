@@ -9,18 +9,18 @@ function Profile() {
 
   const session = window.sessionStorage;
 
+  const navigate = useNavigate();
   const [prf_image, setImage] = useState(null);
   const [values, setValues] = useState({
     name: session.getItem("name"),
     email: session.getItem("email"),
-    password: session.getItem("password"),
-    city: session.getItem('city')
+    city: session.getItem('city'),
+    password: session.getItem("password")
   });
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!window.sessionStorage.getItem('token')) {
-      navigate('/');
+    if (!session.getItem('token')) {
+      navigate('/login');
     }
   });
 
@@ -48,6 +48,7 @@ function Profile() {
       closeButton: false
     });
   };
+
   const error = () => {
     toast.error(
       "Somthing Went Wrong !!",
@@ -85,17 +86,12 @@ function Profile() {
       );
 
       if (request.status === 200) {
-        // session.removeItem("token");
-        // session.removeItem('name');
-        // session.removeItem('email');
-        // session.removeItem('password');
-        // session.removeItem('city');
-
         session.setItem("token", request.data.data.token);
         session.setItem('name', request.data.data.user.name);
-        session.setItem('email', request.data.data.user.email);
-        session.setItem('password', request.data.data.user.password);
         session.setItem('city', request.data.data.user.city);
+        session.setItem('email', request.data.data.user.email);
+        session.setItem('image', request.data.data.user.image);
+        session.setItem('password', request.data.data.user.password);
         success();
       } else {
         error();
@@ -107,15 +103,14 @@ function Profile() {
   }
 
   return (
-    <div className="my-3 mx-2 w-auto" style={{ border: "1px solid black", height: "100vh", display: 'flex', flexDirection: "column", alignItems: "center", justifyContent: 'center', width: '100%' }}>
+    <div className="my-3 mx-2 w-auto">
       <h4 className="text-center text-white bg-dark rounded p-2 mb-5 w-50 mx-auto">Profile</h4>
-      <div className="mx-auto w-auto text-center container" style={{ width: "100%" }}>
+      <div className="mx-auto w-auto text-center container">
         <form
           onSubmit={submitUpdate}
           encType="multipart/form-data"
-          style={{ width: "100%" }}
         >
-          <div className="row">
+          <div className="row mb-3">
             <div className="col-12 col-lg-7">
               <div className="form-floating mb-3">
                 <input

@@ -90,7 +90,6 @@ function Clients() {
                 <tr>
                   <th>Client</th>
                   <th>City</th>
-                  <th>Enrolled Courses</th>
                   <th>Date Added</th>
                   <th>Actions</th>
                 </tr>
@@ -105,7 +104,6 @@ function Clients() {
                       >
                         <td className="text-capitalize">{client.name}</td>
                         <td>{client.city}</td>
-                        <td>10</td>
                         <td>{Date(new Date(client.created_at)).slice(0, 16)}</td>
                         <td className="d-flex gap-1 justify-content-center">
                           <button
@@ -136,10 +134,9 @@ function Clients() {
                       >
                         <td className="text-capitalize">{client.name}</td>
                         <td>{client.city}</td>
-                        <td>10</td>
                         <td>{Date(new Date(client.created_at)).slice(0, 16)}</td>
                         <td className="d-flex gap-1 justify-content-center">
-                          <button
+                          {/* <button
                             className="btn btn-sm p-0 btn-success"
                             onClick={() => {
                               setClient(true);
@@ -147,7 +144,7 @@ function Clients() {
                             }}
                           >
                             <Visibility />
-                          </button>
+                          </button> */}
                           <button
                             className="btn btn-sm p-0 btn-danger"
                             onClick={() => deleteTut(client.id)}
@@ -161,7 +158,7 @@ function Clients() {
                 }
               </tbody>
             </table>
-            <nav>
+            {/* <nav>
               <ul className="pagination justify-content-center">
                 <li className="page-item">
                   <a className="page-link" href="/" aria-label="Previous">
@@ -177,7 +174,7 @@ function Clients() {
                   </a>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
           </div>
         </>
       }

@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import signup from "../assets/signup.svg";
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+
+import signup from "../assets/signup.svg";
+import { cities } from "./Data";
 
 
 function Register() {
 
   const navigate = useNavigate();
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+    city: ""
+  });
 
   useEffect(() => {
     if (window.sessionStorage.getItem('token')) {
@@ -17,15 +26,9 @@ function Register() {
     }
   });
 
-  const [values, setValues] = useState({
-    fullname: "",
-    email: "",
-    password: "",
-  });
-
   const success = () => {
-    toast.success("your account created", {
-      position: "top-right",
+    toast.success("Account Created", {
+      position: "top-center",
       autoClose: 2000,
       hideProgressBar: true,
       closeOnClick: true,
@@ -33,13 +36,14 @@ function Register() {
       draggable: true,
       progress: undefined,
       theme: "light",
+      closeButton: false
     });
   };
   const error = () => {
     toast.error(
-      "Somthing went wrong please re fill the fields || or this email is alredy been taking",
+      "Somthing went wrong !!",
       {
-        position: "top-right",
+        position: "top-center",
         autoClose: 2000,
         hideProgressBar: true,
         closeOnClick: true,
@@ -47,16 +51,20 @@ function Register() {
         draggable: true,
         progress: undefined,
         theme: "light",
+        closeButton: false
       }
     );
   };
 
+  let timeout;
+
   async function handleSubmit(e) {
     e.preventDefault();
     if (
-      values.fullname !== "" &&
+      values.name !== "" &&
       values.email !== "" &&
-      values.password !== ""
+      values.password !== "" &&
+      values.city !== ""
     ) {
       try {
         const response = await axios.post(
@@ -71,7 +79,15 @@ function Register() {
         );
         if (response.status === 200) {
           success();
-          Navigate("/login")
+          setValues({
+            name: "",
+            email: "",
+            password: "",
+            city: ""
+          });
+          timeout = setTimeout(() => {
+            navigate("/login");
+          }, 2200);
         }
       } catch (err) {
         console.log(`Error => ${err.message}`);
@@ -80,6 +96,8 @@ function Register() {
       error();
     }
   }
+
+  clearTimeout(timeout);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -96,14 +114,14 @@ function Register() {
             borderBottomLeftRadius: "7px",
             borderBottomRightRadius: "50px",
             borderTopRightRadius: "50px",
-            height: "80vh",
+            height: "auto",
           }}
         >
           <img
             src={signup}
             style={{ width: "90%", height: "90%" }}
             className="img-fluid"
-            alt=""
+            alt="signup_pic"
           />
         </div>
         <div className="bg-dark p-5 w-auto rounded align-self-center">
@@ -113,10 +131,10 @@ function Register() {
                 type="text"
                 className="form-control"
                 id="floatingPassword"
-                name="fullname"
+                name="name"
                 placeholder="Full Name"
                 onChange={handleChange}
-                value={values.fullname}
+                value={values.name}
               />
               <label htmlFor="floatingPassword">Full Name</label>
             </div>
@@ -144,10 +162,30 @@ function Register() {
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
+            <div className="form-group mb-3">
+              <select
+                name="city"
+                className="form-select"
+                onChange={handleChange}
+                value={values.city}
+              >
+                <option defaultValue={"0"}>City</option>
+                {
+                  cities.map((city, index) => {
+                    return (
+                      <option key={index}>
+                        {city}
+                      </option>
+                    )
+                  })
+                }
+              </select>
+            </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span
                 style={{
-                  color: /[a-z]+/.test(values.password) ? "green" : "gray",
+                  color: /[a-z]+/.test(values.password) ?
+                    "greenyellow" : "lightgrey",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -157,7 +195,8 @@ function Register() {
               </span>
               <span
                 style={{
-                  color: /[A-Z]+/.test(values.password) ? "green" : "gray",
+                  color: /[A-Z]+/.test(values.password) ? 
+                  "greenyellow" : "lightgrey",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -167,7 +206,8 @@ function Register() {
               </span>
               <span
                 style={{
-                  color: /[0-9]+/.test(values.password) ? "green" : "gray",
+                  color: /[0-9]+/.test(values.password) ? 
+                  "greenyellow" : "lightgrey",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -177,7 +217,8 @@ function Register() {
               </span>
               <span
                 style={{
-                  color: /[^\w\s]/.test(values.password) ? "green" : "gray",
+                  color: /[^\w\s]/.test(values.password) ? 
+                  "greenyellow" : "lightgrey",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -187,7 +228,8 @@ function Register() {
               </span>
               <span
                 style={{
-                  color: values.password.length > 8 ? "green" : "gray",
+                  color: values.password.length > 8 ? 
+                  "greenyellow" : "lightgrey",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -196,7 +238,6 @@ function Register() {
                 At least 8 caracters
               </span>
             </div>
-
             <div className="d-flex flex-column">
               <button
                 type="submit"

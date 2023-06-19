@@ -76,9 +76,6 @@ function Profile() {
         updatedValues
       );
 
-      console.log(updatedValues);
-      console.log(request.data.data.user);
-
       if (request.status === 200) {
         session.setItem('name', request.data.data.user.name);
         session.setItem('email', request.data.data.user.email);

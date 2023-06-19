@@ -1,16 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Area, AreaChart, CartesianGrid, Label, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import { data, days, months } from '../../../Data';
+import { days, months } from '../../../Data';
+import axios from 'axios';
 
 
 function CoursesSales() {
 
+  const [data, setCourses] = useState();
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const response = await axios.get('http://127.0.0.1:8000/api/courses/');
+      if (response.status === 200) {
+        setCourses(response.data);
+      };
+    }
+    fetchCourses();
+  }, []);
+
   const [dataMonth, setData] = useState(months[new Date().getMonth()]);
-  const monthly = data.filter(sale => months[sale.date.getMonth()] === dataMonth);
+  const monthly = data && data.data.filter(course => months[course.updated_at.getMonth()] === dataMonth);
 
   return (
     <>
-      <div className='d-flex flex-column' key={Date.now()}>
+      <div className='d-flex flex-column'>
         <select
           key={Date.now()}
           value={dataMonth}
@@ -29,7 +42,10 @@ function CoursesSales() {
             })
           }
         </select>
-        <div style={{ width: '100%', height: "400px" }}>
+        <div
+          key={Date.now()}
+          style={{ width: '100%', height: "400px" }}
+        >
           <ResponsiveContainer>
             <AreaChart
               width={800}

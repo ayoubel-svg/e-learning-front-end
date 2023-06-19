@@ -15,7 +15,7 @@ export default function Analytics() {
               className='mx-auto my-2 w-auto p-1 pb-2 bg-primary fw-bold 
             text-center text-white shadow bg-gradient rounded'
             >
-              Tutors - {new Date().getFullYear()}
+              Tutors
             </h4>
             <TutorsSales />
           </div>
@@ -25,22 +25,20 @@ export default function Analytics() {
               className='mx-auto my-2 w-auto p-1 pb-2 bg-primary fw-bold 
             text-center text-white shadow bg-gradient rounded'
             >
-              Clients - {new Date().getFullYear()}
+              Clients
             </h4>
             <ClientsSales />
           </div>
         </div>
-
-        <div>
+        {/* <div>
           <h4
             className='mx-auto my-2 w-auto p-1 pb-2 bg-primary fw-bold 
             text-center text-white shadow bg-gradient rounded'
           >
-            SALES - {new Date().getFullYear()}
+            SALES
           </h4>
           <CoursesSales />
-        </div>
-
+        </div> */}
       </div>
     </>
   );

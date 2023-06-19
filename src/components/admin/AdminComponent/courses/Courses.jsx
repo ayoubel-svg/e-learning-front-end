@@ -113,9 +113,7 @@ export default function Courses() {
                             key={course.id}
                             style={{ cursor: "pointer" }}
                           >
-                            <td
-                              className="text-capitalize"
-                            >
+                            <td>
                               {course.title}
                             </td>
                             <td className="text-capitalize">
@@ -196,7 +194,7 @@ export default function Courses() {
                 </tbody>
               </table>
             </div>
-            <nav>
+            {/* <nav>
               <ul className="pagination justify-content-center">
                 <li className="page-item">
                   <a className="page-link" href="/" aria-label="Previous">
@@ -212,7 +210,7 @@ export default function Courses() {
                   </a>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
           </>
         )
       }

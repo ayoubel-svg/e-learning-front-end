@@ -12,20 +12,36 @@ import axios from "axios";
 const Courses = () => {
   const navigate = useNavigate();
   const [bestCourses, setBestCourses] = useState([])
+  const [GuestCourses, setGuestCourses] = useState([])
   useEffect(() => {
-    const token = sessionStorage.getItem("token")
     const getData = async () => {
-      const myCourses = await axios.get("http://127.0.0.1:8000/api/cour", {
+      const myCourses = await axios.get("http://127.0.0.1:8000/api/courses", {
         headers: {
           Accept: 'application/json',
-          Authorization: `Bearer ${token}`
         }
       })
-      setBestCourses(myCourses.data.data)
+      setBestCourses(myCourses.data)
     }
     getData()
     // console.log(bestCourses)
   }, [])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const myCourses = await axios.get("http://127.0.0.1:8000/api/getcours", {
+          headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+          }
+        })
+        setGuestCourses(myCourses.data.data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    getData()
+  }, [])
+
   return (
     <Stack
       sx={{
@@ -41,7 +57,7 @@ const Courses = () => {
       <Box sx={{ width: "100%", whiteSpace: "10px" }}>
         <Splide
           options={{
-            perPage: bestCourses.slice(0, 4).length >= 3 ? 3 : bestCourses.slice(0, 4).length,
+            perPage: 3,
             type: "loop",
             perMove: 1,
             focus: "center",

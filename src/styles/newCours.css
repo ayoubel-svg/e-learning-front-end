@@ -102,7 +102,7 @@
     cursor: pointer;
 }
 
-button {
+.publish {
     position: relative;
     background: #1275ea;
     color: #fff;
@@ -111,7 +111,7 @@ button {
     z-index: 1;
 }
 
-button::before {
+.publish::before {
     position: absolute;
     content: "";
     inset: 0;
@@ -122,11 +122,11 @@ button::before {
     z-index: -1;
 }
 
-button:hover::before {
+.publish:hover::before {
     transform: scaleX(1);
 }
 
-button:hover {
+.publish:hover {
     color: #1275ea;
 }
 

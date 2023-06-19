@@ -16,6 +16,12 @@ export default function Client({ client }) {
                   {client.name}
                 </h5>
               </div>
+              <img
+                src={`http://localhost:8000/images/${client.image}`}
+                className="card-img-top img-fluid rounded-circle"
+                alt="pic"
+                style={{ width: "250px", height: '250px' }}
+              />
               <div className="card-body d-flex flex-column" >
                 <ul className="list-group text-start">
                   <li className="list-group-item">

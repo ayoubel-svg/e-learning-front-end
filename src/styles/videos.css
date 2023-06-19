@@ -1,0 +1,64 @@
+@font-face {
+    font-family: inter;
+    src: url("../fonts/Inter-Medium.otf");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: inter;
+    src: url("../fonts/Inter-Light.otf");
+    font-style: normal;
+    font-weight: 200;
+}
+
+.videos-container {
+    padding: 2em;
+    font-family: inter;
+    font-weight: 200;
+    width: 100%;
+    min-height: 100vh;
+
+}
+
+.sub-video-container {
+    display: flex;
+    gap: 2em;
+}
+
+.video {
+    width: 70%;
+    height: 500px;
+}
+
+.video video {
+    width: 100%;
+}
+
+.sub-video {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 2em;
+    padding-top: .7em;
+}
+
+.video-title {
+    font-size: 1.2em;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.4);
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.comment {
+    padding: 2em;
+    padding-top: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.comment textarea {
+    padding: 10px;
+    font-size: 1.2em;
+}

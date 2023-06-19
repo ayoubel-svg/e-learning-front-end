@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap';
 
 import Topbar from "./AdminComponent/topbar/Topbar";
 import SideBar from "./AdminComponent/sidebar/SideBar";

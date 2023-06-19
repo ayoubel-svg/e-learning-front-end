@@ -112,3 +112,8 @@
     border-radius: 0 0 8px 8px;
     gap: 10px;
 }
+
+.btn {
+    background: #1275EA;
+    border-radius: 8px;
+}

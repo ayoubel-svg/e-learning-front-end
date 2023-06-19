@@ -1,8 +1,24 @@
+import axios from 'axios';
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
 
 
 export default function Course({ course, tutors }) {
 
+  // const [videos, setVideos] = useState();
+  // useEffect(() => {
+  //   const getVids = async () => {
+  //     const response = await axios.get(`http://localhost:8000/api/video/`,{
+  //       headers:{
+  //         Authorization:`Bearer ${window.sessionStorage.getItem('token')}`
+  //       }
+  //     })
+  //     setVideos(response)
+  //   }
+  //   getVids()
+  // }, [])
+
+  // console.log(videos && videos);
   return (
     <>
       <div className="row my-3 mx-0">
@@ -65,30 +81,37 @@ export default function Course({ course, tutors }) {
             className="accordion mb-5 mb-lg-0"
             id="accordionExample"
           >
-            <div className="accordion-item">
-              <h2 className="accordion-header">
-                <button
-                  className="accordion-button"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
-                  Accordion Item #1
-                </button>
-              </h2>
-              <div
-                id="collapseOne"
-                className="accordion-collapse collapse show"
-                data-bs-parent="#accordionExample"
-              >
-                <div className="accordion-body">
-                  <strong>This is the third accordion body.</strong>
-                </div>
-              </div>
-            </div>
-            <div className="accordion-item">
+            {/* {
+              videos && videos.data.data.filter(vid => vid.cours_id === course.id).map(vid => {
+                return (
+                  <div className="accordion-item">
+                    <h2 className="accordion-header">
+                      <button
+                        className="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne"
+                        aria-expanded="true"
+                        aria-controls="collapseOne"
+                      >
+                        vid.name
+                      </button>
+                    </h2>
+                    <div
+                      id="collapseOne"
+                      className="accordion-collapse collapse show"
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div className="accordion-body">
+                        <strong>This is the third accordion body.</strong>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })
+            } */}
+
+            {/* <div className="accordion-item">
               <h2 className="accordion-header">
                 <button
                   className="accordion-button collapsed"
@@ -133,7 +156,7 @@ export default function Course({ course, tutors }) {
                   <strong>This is the third accordion body.</strong>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
